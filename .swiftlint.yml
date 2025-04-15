@@ -1,0 +1,21 @@
+included:
+  - Sources
+  - Tests
+excluded:
+   - .git
+   - scripts
+opt_in_rules:
+  - sorted_imports
+  - file_header
+  - modifier_order
+  - redundant_nil_coalescing
+  - unneeded_parentheses_in_closure_argument
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
+  - shorthand_operator
+  - implicit_return
+disabled_rules:
+  - trailing_comma
+analyzer_rules:
+   - unused_declaration
+   - unused_import

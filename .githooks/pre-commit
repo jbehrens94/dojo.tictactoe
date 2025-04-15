@@ -1,0 +1,18 @@
+#!/bin/zsh
+
+WORKDIR=$(git rev-parse --show-toplevel)
+COUNT=0
+CHANGES=$(git diff HEAD --name-only --cached --diff-filter=d | grep "\.swift$")
+
+for change in $CHANGES; do
+    COUNT=$((COUNT + 1))
+done
+
+if [ "$COUNT" -ne 0 ]; then
+    echo "Found $COUNT lintable file(s)! Linting...";
+
+    $WORKDIR/bin/swiftlint --strict --quiet --config $WORKDIR/.swiftlint.yml $CHANGES
+else
+    echo "No lintable files found. Skipping SwiftLint.";
+    exit 0
+fi

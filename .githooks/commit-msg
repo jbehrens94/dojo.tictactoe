@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Declare an array of allowed commit types
+types=("feature" "fix" "chore" "docs" "style" "refactor" "test" "build" "ci" "revert" "release")
+
+# Join the types array into a string that matches regex patterns
+types_regex=$(IFS='|'; echo "${types[*]}")
+
+# Regex pattern using the types array
+regex="^($types_regex)($[a-z]+$)?: .{1,}"
+
+# Get the commit message from the file passed to this script
+commit_message=$(<"$1")
+
+# Check if the commit message matches the conventional commit format
+if ! [[ $commit_message =~ $regex ]]; then
+  echo "Error: Commit message does not follow the conventional commit format."
+  echo "Format should be: <commit type>(optional scope): <description>"
+  echo "Allowed types are: ${types[*]}"
+  exit 1
+fi
