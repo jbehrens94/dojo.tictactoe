@@ -1,10 +1,5 @@
-# {{TicTacToe}}
-This README describes the {{TicTacToe}} package.
-
-## How to get started
-1. Clone this repository.
-2. Run `./scripts/install.sh {TicTacToe}`. This will rename any folder, file or content to use your name of choosing.
-3. Profit!
+# TicTacToe
+This README describes the TicTacToe package.
 
 ## Contributing
 When contributing, a couple of things are important to note.
